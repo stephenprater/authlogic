@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'debugger'
 
 module SessionTest
   class PersistenceTest < ActiveSupport::TestCase
@@ -11,6 +12,16 @@ module SessionTest
       unset_cookie
       set_session_for(ben)
       session = UserSession.find
+      assert session
+    end
+
+    def test_minimal_user_find
+      twit = minimal_users(:twit)
+
+      MinimalUserSession.configured_password_methods = false
+
+      set_session_for(twit)
+      session = MinimalUserSession.find
       assert session
     end
     

@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean   :confirmed, :default => true
   end
 
+  create_table :minimal_users do |t|
+    t.string    :persistence_token
+    t.datetime  :created_at
+    t.datetime  :updated_at
+  end
+
   create_table :employees do |t|
     t.datetime  :created_at
     t.datetime  :updated_at
@@ -99,6 +105,7 @@ require File.dirname(__FILE__) + '/libs/employee'
 require File.dirname(__FILE__) + '/libs/employee_session'
 require File.dirname(__FILE__) + '/libs/ldaper'
 require File.dirname(__FILE__) + '/libs/user'
+require File.dirname(__FILE__) + '/libs/minimal_user'
 require File.dirname(__FILE__) + '/libs/user_session'
 require File.dirname(__FILE__) + '/libs/company'
 
